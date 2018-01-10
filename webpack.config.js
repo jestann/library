@@ -1,33 +1,60 @@
 const path = require('path')
 const webpack = require('webpack')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
+const ENV = process.env.NODE_ENV
 
-module.exports = {
-  context: path.resolve(__dirname, 'src'),
+const baseConfig = {
+  context: path.resolve(__dirname, 'app'),
   entry: {
-    main: './src/index.js',
+    main: './index.js',
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'build'),
     filename: '[name].bundle.js',
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  },
+  devServer: {
+    contentBase: './src',
+    publicPath: '/output'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.scss/,
+        use: [ 'style-loader', 'css-loader', 'sass-loader' ]
+      },
+      {
+        test: /\.js$/,
+        use: { 
+          loader: 'babel-loader',
+          options: { presets: ['react', 'es2016'] }
+        }
+      }
+    ]
+  },
+  plugins: [
+    new HTMLWebpackPlugin(),
+    /* specifies environment */
+    new webpack.DefinePlugin({ 
+      'process.env.NODE_ENV': JSON.stringify(ENV)
+    })
+  ]
 }
+
+if (ENV === 'production') {
+  baseConfig.plugins.push(new webpack.optimize.UglifyJsPlugin())
+}
+
+module.exports = baseConfig
+
+
+
 
 /*
 output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve('./build')
   }
-*/
-
-/*
-
-write your own 3d library
-glsl
-ray tracer - ray caster
-3d to 2d conversion
-don't actually do matrix manipulation
-painter's algorithm
-quad trees and octo trees
-discrete convolution
-
 */
