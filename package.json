@@ -7,7 +7,7 @@
   "author": "jestann",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --hot --inline",
+    "dev": "webpack-dev-server --hot --inline",
     "build": "webpack -p"
   },
   "devDependencies": {
@@ -23,6 +23,8 @@
     "webpack-dev-server": "^2.9.7"
   },
   "dependencies": {
+    "html-webpack-plugin": "^2.30.1",
+    "node": "^9.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   }
