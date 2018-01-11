@@ -7,7 +7,7 @@
   "author": "jestann",
   "license": "MIT",
   "scripts": {
-    "dev": "webpack-dev-server --hot --inline",
+    "dev": "webpack-dev-server --host $IP --port $PORT --hot --inline",
     "build": "webpack -p"
   },
   "devDependencies": {

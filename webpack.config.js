@@ -21,14 +21,6 @@ const baseConfig = {
     contentBase: path.resolve(__dirname, 'app'),
     publicPath: '/build'
   },
-  
-  test: /\.js$/i,
-        exclude: [/node_modules/],
-        use: [{
-          loader: 'babel-loader',
-          options: { presets: ['env'] },
-        }],
-  
   module: {
     rules: [
       {
