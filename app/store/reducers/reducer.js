@@ -1,41 +1,30 @@
-/* reducer function example
+// initial reducer function
 
-// e.g. below
+// import * as types from './actionTypes';
 
 const initialState = {
-  angular: 0,
-  react: 0,
-  vuejs: 0
+  state: 'idle',
+  library: {
+    alpha: { name: 'alpha' },
+    beta: { name: 'beta' }
+  },
+  currentBook: 'alpha',
 }
-export default (state = initialState, action) => {
+
+export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case 'VOTE_ANGULAR':
-      console.log("Your choice is Angular!")
-      return Object.assign({}, state, {
-        angular: state.angular + 1
-      })
-    case 'VOTE_REACT':
-      console.log("Your choice is React!")
-      return Object.assign({}, state, {
-        react: state.react + 1
-      })
-    case 'VOTE_VUEJS':
-      console.log("Your choice is Vue.js")
-      return Object.assign({}, state, {
-        vuejs: state.vuejs + 1
-      })
+    case 'PICK_BOOK':
+      console.log("You chose a book!")
+      return { ...state, currentBook: action.book }
+    case 'SHELVE_BOOK':
+      console.log("You put back your book.")
+      return { ...state, currentBook: null }
     default:
       return state
   }
 }
 
-// or below ...
-
-import * as types from './actionTypes';
-
-const initialState = {
-  articlesById: undefined,
-}
+/* example below ... two methods of state return
 
 export default function reduce(state = initialState, action = {}) {
   switch (action.type) {
@@ -44,10 +33,13 @@ export default function reduce(state = initialState, action = {}) {
         ...state, 
         articlesById: action.articlesById
       };
+    case types.OTHER:
+      return Object.assign({}, state, {
+        angular: state.angular + 1
+      };
     default:
       return state;
   }
 }
-
 
 */
