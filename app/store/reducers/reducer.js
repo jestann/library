@@ -1,5 +1,4 @@
 // initial reducer function
-
 // import * as types from './actionTypes';
 
 const initialState = {

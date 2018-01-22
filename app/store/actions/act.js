@@ -1,25 +1,17 @@
-/* action creator functions
-
-// e.g. below...
-
-export const voteAngular = () => {
+export const action1 = () => {
   return {
-    type: 'VOTE_ANGULAR'
+    type: 'ACTION1'
   }
 }
-export const voteReact = () => {
+
+export const action2 = () => {
   return {
-    type: 'VOTE_REACT'
-  }
-}
-export const voteVuejs = () => {
-  return {
-    type: 'VOTE_VUEJS'
+    type: 'ACTION2'
   }
 }
 
 
-// or this ...
+/* also this...
 
 import { getAllArticles } from '../../services/articles';
 import * as types from './actionTypes'
